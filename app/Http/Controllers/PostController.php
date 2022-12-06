@@ -20,21 +20,43 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $data = $this->PostRepository->index($request);
-        return view('post.index',$data);
+        return view('post.index', $data);
     }
 
     public function create()
     {
         $data = Post::all();
         $categories = Category::all();
-        return view ('post.create',compact('categories','data'));
-
+        return view('post.create', compact('categories', 'data'));
     }
     public function store(PostStoreRequest $request)
     {
         $data = $this->PostRepository->store($request);
-        // dd($data);
+        return redirect()->route('post.index');
+    }
+    public function show($id)
+    {
+        $data = Post::find($id);
+        $categories = Category::find($id);
+        return view('post.show', compact('categories', 'data'));
+    }
+
+    public function edit($id)
+    {
+        $data = Post::find($id);
+        $categories = Category::all();
+        return view('post.edit', compact('data', 'categories'));
+    }
+
+    public function update(PostStoreRequest $request, $id)
+    {
+        $data = $this->PostRepository->update($request, $id);
         return redirect()->route('post.index');
     }
 
+    public function delete($id)
+    {
+        $data = $this->PostRepository->delete($id);
+        return redirect()->route('post.index', $data);
+    }
 }

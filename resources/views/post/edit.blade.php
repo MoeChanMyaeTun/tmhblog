@@ -10,14 +10,15 @@
                             <h2>Post Create</h2>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('post.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
                                     <div class="col-md-3">
                                         <label for="" class="d-block text-center pt-1">Title</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" name="title" id="" class="form-control " required>
+                                        <input type="text" name="title" id="" class="form-control " required
+                                            value="{{ old('title', $data->title) }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -40,7 +41,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <input type="text" name="description" id="" class="form-control"
-                                            required>
+                                            required value="{{ old('description', $data->description) }}">
                                     </div>
                                 </div>
                                 <div class="row mb-3">

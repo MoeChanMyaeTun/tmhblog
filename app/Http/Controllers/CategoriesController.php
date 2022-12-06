@@ -17,13 +17,13 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $data = $this->CategoriesRepository->index();
-        return view('admin.category.index',$data);
+        $categories = $this->CategoriesRepository->index();
+        return view('admin.category.index', $categories);
     }
 
     public function create()
     {
-        return view ('admin.category.create');
+        return view('admin.category.create');
     }
 
     public function store(CategoriesRequest $request)
