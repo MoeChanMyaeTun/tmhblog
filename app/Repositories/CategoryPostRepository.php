@@ -10,7 +10,6 @@ class CategoryPostRepository
     public function show($id)
     {
         $data = category::find($id);
-        //  $posts = Post::where('category_id',$data->id)->paginate(6);
          $posts=post::when(request('title'), function ($query) {
             $query->where('title', 'LIKE', '%' . request('title') . '%');
         })->where('category_id',$data->id)->orderBy('id', 'desc')->paginate(6);
