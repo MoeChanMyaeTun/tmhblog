@@ -36,9 +36,8 @@ class PostController extends Controller
     }
     public function show($id)
     {
-        $data = Post::find($id);
-        $categories = Category::find($id);
-        return view('post.show', compact('categories', 'data'));
+        $data = $this->PostRepository->show($id);
+        return view('post.show',$data);
     }
 
     public function edit($id)

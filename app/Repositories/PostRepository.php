@@ -11,11 +11,9 @@ class PostRepository
 {
     public function index(Request $request)
     {
-        if ($request['title'] != null) {
-            $data = Post::where('title', 'LIKE', '%' . $request->title . '%')->paginate(6);
-        } else {
-            $data = Post::orderBy('id', 'desc')->paginate(6);
-        }
+            $data=post::when(request('title'), function ($query) {
+            $query->where('title', 'LIKE', '%' . request('title') . '%');
+        })->orderBy('id', 'desc')->paginate(6);
         $categories = Category::with('post')->get();
         $latest = Post::orderBy('id', 'DESC')->limit(5)->get();
         return compact(
@@ -53,9 +51,16 @@ class PostRepository
     public function show($id)
     {
         $data = Post::find($id);
-
+        $posts=post::when(request('title'), function ($query) {
+            $query->where('title', 'LIKE', '%' . request('title') . '%');
+        })->where('category_id',$data->category_id)->limit(3)->get();
+        $categories =Category::with('post')->get();
+        $latest = Post::orderBy('id', 'DESC')->limit(5)->get();
         return compact(
-            'data'
+            'data',
+            'latest',
+            'categories',
+            'posts'
         );
     }
 

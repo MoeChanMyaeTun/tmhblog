@@ -18,4 +18,12 @@ class PostStoreRequest extends FormRequest
             'image' => 'image|mimes:jpeg,png,jpg',
         ];
     }
+    public function messages()
+    {
+        return [
+            'title.required' => 'Title is required!',
+            'description' => 'Description is required',
+            'image' => 'Image file type is not jpeg,png,jpg '
+        ];
+    }
 }
