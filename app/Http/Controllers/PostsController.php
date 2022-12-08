@@ -23,6 +23,7 @@ class PostsController extends Controller
 
         return view('admin.post.index', $data);
     }
+
     public function edit($id)
     {
         $data = Post::find($id);
@@ -38,12 +39,11 @@ class PostsController extends Controller
         return redirect()->route('admin.post.index');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
-        $data = $this->PostsRepository->delete($id);
+        $data = $this->PostsRepository->destroy($id);
 
         return redirect()->route('admin.post.index', $data);
     }
-
 
 }

@@ -48,7 +48,7 @@ class PostsRepository
         );
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $data = post::find($id);
         $data->delete();
