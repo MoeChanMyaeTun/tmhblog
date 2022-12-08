@@ -16,10 +16,10 @@
                                         <p class="text-secondary fs-6 text"><i
                                                 class="fas fa-calendar"></i>&nbsp;{{ $post->created_at }}</p>
                                         <p class="text-secondary fs-6 text"><i
-                                                class="fa-solid fa-user"></i>&nbsp;{{ $post->user?->name }}</p>
+                                                class="fa-solid fa-user"></i>&nbsp; {{ optional($post->user)->name}}</p>
                                     </div>
                                     <p class="text-secondary fs-6 text"><i
-                                            class="fa-solid fa-folder-open"></i>&nbsp;{{ $post->category?->name }}</p>
+                                            class="fa-solid fa-folder-open"></i>&nbsp; {{ optional($post->category)->name}}</p>
                                     <p class="align-justify">{{ Str::limit($post->description, 100) }}...</p>
                                     <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary px-3 my-4">Read
                                         More</a>

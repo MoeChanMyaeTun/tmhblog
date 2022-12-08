@@ -13,9 +13,9 @@
                             <p class="text-secondary fs-6 text"><i class="fas fa-calendar"></i>&nbsp;{{ $data->created_at }}
                             </p>
                             <p class="text-secondary fs-6 text"><i
-                                    class="fa-solid fa-user"></i>&nbsp;{{ $data->user?->name }}</p>
+                                    class="fa-solid fa-user"></i>&nbsp; {{ optional($data->user)->name}}</p>
                             <p class="text-secondary fs-6 text"><i
-                                    class="fa-solid fa-folder-open"></i>&nbsp;{{ $data->category?->name }}</p>
+                                    class="fa-solid fa-folder-open"></i>&nbsp; {{ optional($data->category)->name}}</p>
                         </div>
                         <p class="align-justify">{{ $data->description }}</p>
                     </div>

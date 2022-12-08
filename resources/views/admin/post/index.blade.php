@@ -1,6 +1,6 @@
 @extends('admin/layout')
 @section('content')
-    <div class="my-4">
+    <div class=" py-5">
 
         <form action="" class="mt-3 w-25 d-flex align-items-start  my-2">
             <input id="title" type="text" class="form-control rounded-start" name="title" autocomplete="title"
@@ -23,11 +23,11 @@
                 <tr>
                     <td>{{ request()->page ? (request()->page - 1) * 5 + $loop->iteration : $loop->iteration }}</td>
                     <td>
-                        {{ $post->user?->name }}
+                       {{ optional($post->user)->name}}
                     </td>
                     <td>{{ $post->title }}</td>
                     <td>
-                        {{ $post->category?->name }}
+                       {{ optional($post->category)->name }}
                     </td>
                     <td>
                         <div class="cart  align-items-center ">
