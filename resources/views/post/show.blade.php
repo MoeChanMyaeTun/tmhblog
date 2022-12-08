@@ -73,6 +73,7 @@
                 <div class=" my-3">
                     <h2 class="my-4">CATEGORIES</h2>
                     @foreach ($categories as $category)
+                    <a href="{{ route('category.show',$category->id) }}"  class="link-secondary text-decoration-none">
                         @if ($category->post->count() > 0)
                             <div class="row mb-1 px-2">
                                 <div class="col-md-6">
@@ -81,6 +82,7 @@
                             </div>
                             <hr class="my-1">
                         @endif
+                    </a>
                     @endforeach
                 </div>
 
