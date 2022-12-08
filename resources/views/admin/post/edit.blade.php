@@ -12,7 +12,7 @@
                             <form action="{{ route('admin.post.update', $data->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-                                @method("Put")
+                                @method('Put')
                                 <div class="row mb-3">
                                     <div class="col-md-3">
                                         <label for="" class="d-block text-center pt-1">Title</label>

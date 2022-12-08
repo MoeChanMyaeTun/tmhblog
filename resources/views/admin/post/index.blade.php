@@ -23,11 +23,11 @@
                 <tr>
                     <td>{{ request()->page ? (request()->page - 1) * 5 + $loop->iteration : $loop->iteration }}</td>
                     <td>
-                       {{ optional($post->user)->name}}
+                        {{ optional($post->user)->name }}
                     </td>
                     <td>{{ $post->title }}</td>
                     <td>
-                       {{ optional($post->category)->name }}
+                        {{ optional($post->category)->name }}
                     </td>
                     <td>
                         <div class="cart  align-items-center ">

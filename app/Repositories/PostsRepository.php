@@ -11,9 +11,10 @@ class PostsRepository
 {
     public function index(Request $request)
     {
-        $data=post::when(request('title'), function ($query) {
+        $data = post::when(request('title'), function ($query) {
             $query->where('title', 'LIKE', '%' . request('title') . '%');
         })->orderBy('id', 'desc')->paginate(6);
+
         return compact(
             'data',
         );
@@ -30,6 +31,7 @@ class PostsRepository
             $file->move($save_path, $save_path . "/$file_name");
         }
     }
+
     public function update(PostStoreRequest $request, $id)
     {
         $data = post::find($id);

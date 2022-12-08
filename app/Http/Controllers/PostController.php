@@ -20,6 +20,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $data = $this->PostRepository->index($request);
+
         return view('post.index', $data);
     }
 
@@ -27,16 +28,19 @@ class PostController extends Controller
     {
         $data = Post::all();
         $categories = Category::all();
+
         return view('post.create', compact('categories', 'data'));
     }
     public function store(PostStoreRequest $request)
     {
         $data = $this->PostRepository->store($request);
+
         return redirect()->route('post.index');
     }
     public function show($id)
     {
         $data = $this->PostRepository->show($id);
+
         return view('post.show',$data);
     }
 

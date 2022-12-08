@@ -18,6 +18,7 @@ class CategoryPostController extends Controller
     public function show($id)
     {
         $data = $this->CategoryPostRepository->show($id);
+
         return view('category.index', $data);
     }
 }

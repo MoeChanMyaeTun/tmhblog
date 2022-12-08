@@ -20,24 +20,28 @@ class PostsController extends Controller
     public function index(Request $request)
     {
         $data = $this->PostsRepository->index($request);
+
         return view('admin.post.index', $data);
     }
     public function edit($id)
     {
         $data = Post::find($id);
         $categories = Category::all();
+
         return view('admin.post.edit', compact('data', 'categories'));
     }
 
     public function update(PostStoreRequest $request, $id)
     {
         $data = $this->PostsRepository->update($request, $id);
+
         return redirect()->route('admin.post.index');
     }
 
     public function delete($id)
     {
         $data = $this->PostsRepository->delete($id);
+
         return redirect()->route('admin.post.index', $data);
     }
 

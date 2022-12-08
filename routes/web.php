@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CategoryPostController;
 
@@ -22,8 +22,7 @@ use App\Http\Controllers\CategoryPostController;
 
 Auth::routes();
 
-Route::get('logout', [LoginController::class, 'logout']);
-// Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //post
 Route::get('/',[PostController::class,'index'])->name('post.index');

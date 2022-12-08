@@ -5,7 +5,7 @@
         <a href="{{ route('admin.category.create') }}" class="btn btn-primary"> create</a>
         <table class="table table-striped text-center   mx-auto mt-4">
             <thead class="table-dark">
-                <tr >
+                <tr>
                     <th>No</th>
                     <th>Name</th>
                 </tr>
@@ -13,13 +13,12 @@
 
             @foreach ($data as $category)
                 <tr>
-                    <td>{{ request()->page? (request()->page - 1) * 5 + $loop->iteration : $loop->iteration }}</td>
+                    <td>{{ request()->page ? (request()->page - 1) * 5 + $loop->iteration : $loop->iteration }}</td>
                     <td>
                         {{ $category->name }}
                     </td>
                 </tr>
-                @endforeach
+            @endforeach
         </table>
     </div>
-
 @endsection
