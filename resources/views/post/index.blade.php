@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row">
@@ -19,7 +18,8 @@
                                         <p class="text-secondary fs-6 text"><i
                                                 class="fa-solid fa-user"></i>&nbsp;{{ $post->user?->name }}</p>
                                     </div>
-                                    <p class="text-secondary fs-6 text"><i class="fa-solid fa-folder-open"></i>&nbsp;{{ $post->category?->name }}</p>
+                                    <p class="text-secondary fs-6 text"><i
+                                            class="fa-solid fa-folder-open"></i>&nbsp;{{ $post->category?->name }}</p>
                                     <p class="align-justify">{{ Str::limit($post->description, 100) }}...</p>
                                     <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary px-3 my-4">Read
                                         More</a>
@@ -61,7 +61,7 @@
                 <div class="col-md-12 my-3">
                     <h2 class="my-4">CATEGORIES</h2>
                     @foreach ($categories as $category)
-                        <a href="{{ route('category.show',$category->id) }}"  class="link-secondary text-decoration-none">
+                        <a href="{{ route('category.show', $category->id) }}" class="link-secondary text-decoration-none">
                             @if ($category->post->count() > 0)
                                 <div class="row mb-1 px-2">
                                     <div class="col-md-6">
@@ -78,6 +78,5 @@
     </div>
     <footer class="bg-dark  py-1 mt-2">
         <p class="text-white text-center my-0"> Copyright 2022</p>
-      </footer>
+    </footer>
 @endsection
-

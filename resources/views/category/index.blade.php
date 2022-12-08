@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -16,13 +15,11 @@
                                 <div class="d-flex justify-content-between">
                                     <p class="text-secondary fs-6 text"><i
                                             class="fas fa-calendar"></i>&nbsp;{{ $post->created_at }}</p>
-                                    <p class="text-secondary fs-6 text"><i
-                                            class="fa-solid fa-user"></i>&nbsp;{{ $post->user?->name }}</p>
+                                    <p class="text-secondary fs-6 text"><i class="fa-solid fa-user"></i>&nbsp;{{ $post->user?->name }}</p>
                                 </div>
                                 <p class="text-secondary fs-6 text"><i class="fa-solid fa-folder-open"></i>&nbsp;{{ $post->category?->name }}</p>
                                 <p class="align-justify">{{ Str::limit($post->description, 100) }}...</p>
-                                <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary px-3 my-4">Read
-                                    More</a>
+                                <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary px-3 my-4">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -34,8 +31,7 @@
             <form action="" class="mt-3 d-flex align-items-start ">
                 <input id="title" type="text" class="form-control rounded-start" name="title"
                     autocomplete="title">
-                <button class="btn btn-light border border-secondary" style="margin-left:-16px"><i
-                        class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="btn btn-light border border-secondary" style="margin-left:-16px"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <div class="col-md-12 my-3">
                 <h2>LATEST POST</h2>
@@ -44,8 +40,7 @@
                         <div class="row my-3 pb-3 border-bottom border-secondary ">
                             <div class="col-md-3">
                                 @if ($post->image)
-                                    <img src="{{ asset($post->image) }}" alt=""
-                                        style="width:100%; height:100px">
+                                    <img src="{{ asset($post->image) }}" alt=""  style="width:100%; height:100px">
                                 @endif
                             </div>
                             <div class="col-md-9">

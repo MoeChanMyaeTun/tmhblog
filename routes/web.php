@@ -45,6 +45,6 @@ Route::post('category/create',[CategoriesController::class,'store'])->name('cate
 
 Route::get('/post',[PostsController::class,'index'])->name('post.index');
 Route::get('/post/edit/{id}',[PostsController::class, 'edit'])->name('post.edit');
-Route::post('/post/update/{id}',[PostsController::class, 'update'])->name('post.update');
+Route::put('/post/update/{id}',[PostsController::class, 'update'])->name('post.update');
 Route::delete('/post/delete/{id}',[PostsController::class, 'delete'])->name('post.delete');
 });

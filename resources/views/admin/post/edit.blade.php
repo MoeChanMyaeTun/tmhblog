@@ -9,8 +9,10 @@
                             <h2>Post Create</h2>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.post.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.post.update', $data->id) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
+                                @method("Put")
                                 <div class="row mb-3">
                                     <div class="col-md-3">
                                         <label for="" class="d-block text-center pt-1">Title</label>
@@ -25,15 +27,14 @@
                                         <label for="" class="d-block text-center pt-1">Category</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <select class="form-select form-control" id="pre-selected-options" name="category-names"
-                                            aria-label="Choose Category Name" multiple>
+                                        <select class="form-select form-control" id="pre-selected-options"
+                                            name="category-names" aria-label="Choose Category Name" multiple>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}"> {{ $category->name }} </option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="row mb-3">
                                     <div class="col-md-3">
                                         <label for="" class="d-block text-center pt-1">Description</label>
@@ -60,7 +61,6 @@
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
