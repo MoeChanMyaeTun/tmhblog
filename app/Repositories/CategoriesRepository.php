@@ -10,9 +10,9 @@ class CategoriesRepository
 {
     public function index()
     {
-        $categories = Category::all();
+        $data = Category::all();
         return compact(
-            'categories',
+            'data',
         );
     }
     public function create()

@@ -7,6 +7,7 @@
                         @if ($data->image)
                     <img src="{{ asset($data->image) }}" alt="" style="width:100%; height:400px">
                 @endif
+
                 <div class="px-4 py-3 bg-light">
                     <h2> {{ $data->title }} </h2>
                     <div class=" w-50 d-flex justify-content-between">
@@ -15,6 +16,7 @@
                         <p class="text-secondary fs-6 text"><i class="fa-solid fa-folder-open"></i>&nbsp;{{ $data->category?->name }}</p>
                     </div>
                     <p class="align-justify">{{ $data->description }}</p>
+
                 </div>
                 </div>
                 <!--detail-->

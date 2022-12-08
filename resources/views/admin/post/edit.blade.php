@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('admin/layout')
 @section('content')
     <div class="mv">
         <div class="container">
@@ -10,7 +9,7 @@
                             <h2>Post Create</h2>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('post.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.post.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
                                     <div class="col-md-3">
@@ -26,7 +25,7 @@
                                         <label for="" class="d-block text-center pt-1">Category</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <select class="form-select" id="pre-selected-options" name="category-names"
+                                        <select class="form-select form-control" id="pre-selected-options" name="category-names"
                                             aria-label="Choose Category Name" multiple>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}"> {{ $category->name }} </option>

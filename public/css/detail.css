@@ -1,0 +1,40 @@
+.container .post-detail .icons .icon {
+    width: 40px;
+    height: 40px;
+    /* background-color: #fff; */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s ease;
+    transform: rotate(180deg);
+    cursor: pointer
+}
+
+/* .container .product-item .product .icons .icon:hover {
+    background-color: #b71c1c;
+    color: #fff
+} */
+
+.container .post-detail .icons .icon:nth-last-of-type(3) {
+    transition-delay: 0.2s;
+    margin-right:50px;
+
+}
+
+.container .post-detail .icons .icon:nth-last-of-type(2) {
+    transition-delay: 0.15s;
+    margin-right:50px;
+    width: 100px;
+}
+
+.container .post-detail  .icons .icon:nth-last-of-type(1) {
+    transition-delay: 0.1s;
+    margin-right:50px;
+    width: 100px;
+}
+
+.container .post-detail:hover .product .icons .icon {
+    transform: translateY(-100px);
+    width: 100px;
+}

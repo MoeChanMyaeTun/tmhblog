@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CategoryPostController;
 
@@ -32,7 +33,6 @@ Route::get('/post/show/{id}',[PostController::class, 'show'])->name('post.show')
 Route::get('/post/edit/{id}',[PostController::class, 'edit'])->name('post.edit');
 Route::post('/post/update/{id}',[PostController::class, 'update'])->name('post.update');
 Route::delete('/post/delete/{id}',[PostController::class, 'delete'])->name('post.delete');
-
 //category_post
 
 Route::get('category/{id}',[CategoryPostController::class,'show'])->name('category.show');
@@ -43,4 +43,8 @@ Route::get('category',[CategoriesController::class,'index'])->name('category.ind
 Route::get('category/create',[CategoriesController::class,'create'])->name('category.create');
 Route::post('category/create',[CategoriesController::class,'store'])->name('category.store');
 
+Route::get('/post',[PostsController::class,'index'])->name('post.index');
+Route::get('/post/edit/{id}',[PostsController::class, 'edit'])->name('post.edit');
+Route::post('/post/update/{id}',[PostsController::class, 'update'])->name('post.update');
+Route::delete('/post/delete/{id}',[PostsController::class, 'delete'])->name('post.delete');
 });

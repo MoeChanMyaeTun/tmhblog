@@ -7,6 +7,12 @@ use App\Models\Category;
 
 class CategoryPostRepository
 {
+    public function index(){
+        $data = category::all();
+        return compact(
+            'data',
+        );
+    }
     public function show($id)
     {
         $data = category::find($id);
