@@ -11,17 +11,19 @@ class PostRepository
 {
     public function index(Request $request)
     {
-            $data=post::when(request('title'), function ($query) {
+        $data = post::when(request('title'), function ($query) {
             $query->where('title', 'LIKE', '%' . request('title') . '%');
         })->orderBy('id', 'desc')->paginate(6);
         $categories = Category::with('post')->get();
         $latest = Post::orderBy('id', 'DESC')->limit(5)->get();
+
         return compact(
             'data',
             'categories',
             'latest'
         );
     }
+
     public function store(PostStoreRequest $request)
     {
         $data = new Post();
@@ -36,6 +38,7 @@ class PostRepository
             'data',
         );
     }
+
     public function storeImage($data)
     {
         if (request()->file('image') != null) {
@@ -51,11 +54,12 @@ class PostRepository
     public function show($id)
     {
         $data = Post::find($id);
-        $posts=post::when(request('title'), function ($query) {
+        $posts = post::when(request('title'), function ($query) {
             $query->where('title', 'LIKE', '%' . request('title') . '%');
-        })->where('category_id',$data->category_id)->limit(3)->get();
-        $categories =Category::with('post')->get();
+        })->where('category_id', $data->category_id)->limit(3)->get();
+        $categories = Category::with('post')->get();
         $latest = Post::orderBy('id', 'DESC')->limit(5)->get();
+
         return compact(
             'data',
             'latest',

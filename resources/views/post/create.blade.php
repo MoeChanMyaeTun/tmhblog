@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="mv">
         <div class="container">
@@ -17,12 +16,13 @@
                                         <label for="" class="d-block text-center pt-1">Title</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" name="title" id="" class="form-control  @error('title') is-invalid @enderror" >
+                                        <input type="text" name="title" id=""
+                                            class="form-control  @error('title') is-invalid @enderror">
                                         @error('title')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -44,12 +44,13 @@
                                         <label for="" class="d-block text-center pt-1">Description</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="text" name="description" id="" class="form-control @error('description') is-invalid @enderror" >
+                                        <input type="text" name="description" id=""
+                                            class="form-control @error('description') is-invalid @enderror">
                                         @error('description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -57,12 +58,13 @@
                                         <label for="" class="d-block text-center pt-1">Image</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <input type="file" name="image" id="" class="form-control @error('image') is-invalid @enderror" >
+                                        <input type="file" name="image" id=""
+                                            class="form-control @error('image') is-invalid @enderror">
                                         @error('image')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -74,7 +76,6 @@
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>

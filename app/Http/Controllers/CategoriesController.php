@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\CategoriesRequest;
 use App\Repositories\CategoriesRepository;
 
@@ -18,6 +17,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $data= $this->CategoriesRepository->index();
+
         return view('admin.category.index', $data);
     }
 
@@ -29,6 +29,7 @@ class CategoriesController extends Controller
     public function store(CategoriesRequest $request)
     {
         $data = $this->CategoriesRepository->store($request);
+
         return redirect()->route('admin.category.index');
     }
 }
