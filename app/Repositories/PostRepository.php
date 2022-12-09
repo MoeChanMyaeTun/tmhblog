@@ -11,49 +11,54 @@ class PostRepository
 {
     public function index(Request $request)
     {
-        $data = post::when(request('title'), function ($query) {
+        $posts = post::when(request('title'), function ($query) {
             $query->where('title', 'LIKE', '%' . request('title') . '%');
         })->orderBy('id', 'desc')->paginate(6);
         $categories = Category::with('post')->get();
         $latest = Post::orderBy('id', 'DESC')->limit(5)->get();
 
         return compact(
-            'data',
+            'posts',
             'categories',
             'latest'
         );
     }
 
-    public function store(PostStoreRequest $request)
+    public function create()
     {
-        $data = new Post();
-        $data->title = $request['title'];
-        $data->description = $request['description'];
-        $data->category_id = $request['category-names'];
-        $data->user_id = auth()->user()->id;
-        $this->storeImage($data);
-        $data->save();
+        $categories = Category::all();
 
         return compact(
-            'data',
+            'categories',
         );
     }
 
-    public function storeImage($data)
+    public function store(PostStoreRequest $request)
     {
         if (request()->file('image') != null) {
 
             $file = request()->file('image');
-            $file_name = uniqid(time()) . '_' . $file->getClientOriginalName();
-            $save_path = ('img');
-            $data->image = "$save_path/$file_name";
-            $file->move($save_path, $save_path . "/$file_name");
+            // $file_name = $file->getClientOriginalName();
+            $file_name = $file->getClientOriginalName();
+            $file = $request->image->storeAs('public/images/post', "$file_name");
         }
+
+        $posts = Post::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category_id' => $request->name,
+            'user_id' => auth()->id(),
+            'image' => $file,
+        ]);
+
+        return compact(
+            'posts',
+        );
     }
 
-    public function show($id)
+    public function show(Post $post)
     {
-        $data = Post::find($id);
+        $data = Post::find($post);
         $posts = post::when(request('title'), function ($query) {
             $query->where('title', 'LIKE', '%' . request('title') . '%');
         })->where('category_id', $data->category_id)->limit(3)->get();
@@ -68,30 +73,4 @@ class PostRepository
         );
     }
 
-    public function update(PostStoreRequest $request, $id)
-    {
-        $data = post::find($id);
-        $data->title = $request['title'];
-        $data->description = $request['description'];
-        $data->category_id = $request['category-names'];
-        $data->user_id = auth()->user()->id;
-        $this->storeImage($data);
-        $data->update();
-        $category = Category::find($id);
-
-        return compact(
-            'data',
-            'category'
-        );
-    }
-
-    public function delete($id)
-    {
-        $data = post::find($id);
-        $data->delete();
-
-        return compact(
-            'data'
-        );
-    }
 }

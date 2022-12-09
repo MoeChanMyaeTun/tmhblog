@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Repositories\PostRepository;
 use App\Http\Requests\PostStoreRequest;
@@ -19,30 +17,30 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $data = $this->PostRepository->index($request);
+        $posts = $this->PostRepository->index($request);
 
-        return view('post.index', $data);
+        return view('post.index', $posts);
     }
 
     public function create()
     {
-        $data = Post::all();
-        $categories = Category::all();
+        $posts = $this->PostRepository->create();
 
-        return view('post.create', compact('categories', 'data'));
+        return view('post.create', $posts);
     }
+
     public function store(PostStoreRequest $request)
     {
-        $data = $this->PostRepository->store($request);
+        $posts = $this->PostRepository->store($request);
 
         return redirect()->route('post.index');
     }
-    public function show($id)
+
+    public function show($post)
     {
-        $data = $this->PostRepository->show($id);
+        $posts = $this->PostRepository->show($post);
 
-        return view('post.show',$data);
+        return view('post.show', $posts);
     }
-
 
 }

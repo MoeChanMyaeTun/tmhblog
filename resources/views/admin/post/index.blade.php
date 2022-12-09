@@ -19,7 +19,7 @@
                 </tr>
             </thead>
 
-            @foreach ($data as $post)
+            @foreach ($posts as $post)
                 <tr>
                     <td>{{ request()->page ? (request()->page - 1) * 5 + $loop->iteration : $loop->iteration }}</td>
                     <td>
@@ -48,6 +48,6 @@
                 </tr>
             @endforeach
         </table>
-        {{ $data->appends(request()->input())->links() }}
+        {{ $posts->appends(request()->input())->links() }}
     </div>
 @endsection

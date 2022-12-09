@@ -11,7 +11,7 @@
                 </tr>
             </thead>
 
-            @foreach ($data as $category)
+            @foreach ($categories as $category)
                 <tr>
                     <td>{{ request()->page ? (request()->page - 1) * 5 + $loop->iteration : $loop->iteration }}</td>
                     <td>

@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostStoreRequest extends FormRequest
@@ -14,16 +15,17 @@ class PostStoreRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'category-names'  => 'required',
+            'name' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg',
         ];
     }
+
     public function messages()
     {
         return [
             'title.required' => 'Title is required!',
             'description' => 'Description is required',
-            'image' => 'Image file type is not jpeg,png,jpg '
+            'image' => 'Image file type is not jpeg,png,jpg ',
         ];
     }
 }

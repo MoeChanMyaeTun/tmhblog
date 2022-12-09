@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoriesRequest;
 use App\Repositories\CategoriesRepository;
 
 class CategoriesController extends Controller
@@ -11,25 +10,13 @@ class CategoriesController extends Controller
 
     public function __construct(CategoriesRepository $CategoriesRepository)
     {
-        $this->CategoriesRepository = $CategoriesRepository;
+        $this->CategoryPostRepository = $CategoriesRepository;
     }
 
-    public function index()
+    public function show($id)
     {
-        $data= $this->CategoriesRepository->index();
+        $categories = $this->CategoryPostRepository->show($id);
 
-        return view('admin.category.index', $data);
-    }
-
-    public function create()
-    {
-        return view('admin.category.create');
-    }
-
-    public function store(CategoriesRequest $request)
-    {
-        $data = $this->CategoriesRepository->store($request);
-
-        return redirect()->route('admin.category.index');
+        return view('category.index', $categories);
     }
 }

@@ -30,7 +30,7 @@
                                         <label for="" class="d-block text-center pt-1">Category</label>
                                     </div>
                                     <div class="col-md-9">
-                                        <select class="form-select" id="pre-selected-options" name="category-names"
+                                        <select class="form-select" id="pre-selected-options" name="name"
                                             aria-label="Choose Category Name" multiple>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}"> {{ $category->name }} </option>
