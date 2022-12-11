@@ -44,7 +44,7 @@
                             <div class="row my-3 pb-3 border-bottom border-secondary ">
                                 <div class="col-md-3">
                                     @if ($post->image)
-                                    <img src="{{ asset('/storage/images/post/'.$post->image) }}" alt="" style="width:100%; height:200px">
+                                    <img src="{{ asset('/storage/images/post/'.$post->image) }}" alt="" style="width:100%; height:100px;">
                                     @endif
                                 </div>
                                 <div class="col-md-9">

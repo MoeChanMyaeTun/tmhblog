@@ -20,39 +20,38 @@ class PostRepository
         );
     }
 
-    public function storeImage($posts)
-    {
-        if (request()->file('image') != null) {
-
-            $file = request()->file('image');
-            $file_name = uniqid(time()) . '_' . $file->getClientOriginalName();
-            $save_path = ('img');
-            $posts->image = "$save_path/$file_name";
-            $file->move($save_path, $save_path . "/$file_name");
-        }
-    }
+   
 
     public function edit(Post $post)
     {
-        $data = Post::find($post);
+        $data = Post::findOrfail($post->id);
         $categories = Category::all();
 
         return compact(
-            'posts',
+            'data',
             'categories'
         );
 
     }
 
-    public function update(PostStoreRequest $request, Post $post, Category $category)
+    public function update(Request $request, Post $post)
     {
-        $posts = post::find($post);
-        $post->title = $request['title'];
-        $post->description = $request['description'];
-        $post->category_id = $request['category-names'];
-        $this->storeImage($post);
-        $post->update();
-        $category = Category::find($category);
+        if (request()->file('image') != null) {
+
+            $file = request()->file('image');
+            $fileName = $file->getClientOriginalName();
+            $file = $request->file('image')->storeAs('public/images/post', "$fileName");
+          
+        }
+        
+        $posts = Post::update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category_id' => $request->name,
+            'user_id' => auth()->id(),
+            'image' => $fileName,
+        ]);
+
 
         return compact(
             'posts',

@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <select class="form-select form-control" id="pre-selected-options"
-                                            name="category-names" aria-label="Choose Category Name" multiple>
+                                            name="name" aria-label="Choose Category Name" multiple>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}"> {{ $category->name }} </option>
                                             @endforeach
