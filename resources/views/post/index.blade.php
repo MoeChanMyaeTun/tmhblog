@@ -8,7 +8,7 @@
                         <div class="col-md-6 my-3 ">
                             <div class="card">
                                 @if ($post->image)
-                                    <img src="{{ asset('/storage'.'/'.$post->image) }}" alt="" style="width:100%; height:200px">
+                                    <img src="{{ asset('/storage/images/post/'.$post->image) }}" alt="" style="width:100%; height:200px">
                                 @endif
                                 <div class="px-4 py-3 bg-light">
                                     <h2> {{ $post->title }} </h2>
@@ -44,8 +44,7 @@
                             <div class="row my-3 pb-3 border-bottom border-secondary ">
                                 <div class="col-md-3">
                                     @if ($post->image)
-                                        <img src="{{ asset($post->image) }}" alt=""
-                                            style="width:100%; height:100px">
+                                    <img src="{{ asset('/storage/images/post/'.$post->image) }}" alt="" style="width:100%; height:200px">
                                     @endif
                                 </div>
                                 <div class="col-md-9">

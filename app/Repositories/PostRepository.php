@@ -4,8 +4,10 @@ namespace App\Repositories;
 
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostStoreRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostRepository
 {
@@ -38,9 +40,9 @@ class PostRepository
         if (request()->file('image') != null) {
 
             $file = request()->file('image');
-            // $file_name = $file->getClientOriginalName();
-            $file_name = $file->getClientOriginalName();
-            $file = $request->image->storeAs('public/images/post', "$file_name");
+            $fileName = $file->getClientOriginalName();
+            $file = $request->file('image')->storeAs('public/images/post', "$fileName");
+          
         }
 
         $posts = Post::create([
@@ -48,7 +50,7 @@ class PostRepository
             'description' => $request->description,
             'category_id' => $request->name,
             'user_id' => auth()->id(),
-            'image' => $file,
+            'image' => $fileName,
         ]);
 
         return compact(
